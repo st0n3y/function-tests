@@ -39,7 +39,7 @@ end
 
 
 def number_to_full_name(month_num)
-  month = case month_number
+  month = case month_num
   when 1
     "January"
   when 2
@@ -106,12 +106,11 @@ end
 
 
 def volume_of_sphere(radius)
-  radius 
-  sphere_volume = 4/3 * Math::pi * radius ** 2
+  volume = ( ( 4.0 / 3.0 ) * ( Math::PI ) * ( radius ** 3 ))
 end
 
 
-def days_until_christman()
+def days_until_christmas()
 
 end
 
