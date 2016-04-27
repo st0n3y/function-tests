@@ -68,26 +68,35 @@ class Functions_Practice < MiniTest::Test
 
   #Given the length of a side of a cube calculate the volume 
   def test_volume_of_cube()
-    test_volume = volume_of_cube(3)
-    assert_equal( 27, test_volume)
+    volume = volume_of_cube(3)
+    assert_equal( 27, volume)
   end
 
   #Given the radius of a sphere calculate the volume
   def test_volume_of_sphere()
-    test_volume = volume_of_sphere(1)
-    assert_equal(4.19, test_volume)
+    volume = volume_of_sphere(1)
+    assert_equal(4.19, volume)
   end
 
   #http://ruby-doc.org/stdlib-2.1.1/libdoc/date/rdoc/Date.html
   #Days until christmas, Calculate how many nights there are from today until Christmas morning
+  require 'date'
   def test_days_until_christmas()
-
+    test_date = Date.new( 2016, 12, 23 )
+    days = days_until_christmas(test_date)
+    assert_equal( 2, days )
   end
 
   #Given a date of birth, calculate how old a person born on that date would be
   def test_age_of_person()
-
+    age = age_of_person(Date.new( 1986, 12, 10 ).to_s)
+    assert_equal( 29, age )
   end
+
+  # def test_age_of_person()
+  #   age = age_of_person( 1986, 12, 10 )
+  #   assert_equal( 29, age )
+  # end
 
 
 end

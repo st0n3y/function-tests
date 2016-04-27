@@ -24,7 +24,7 @@ end
 
 
 def length_of_string(some_string)
-  string_length = some_string.length
+  return some_string.length
 end
 
 
@@ -34,87 +34,67 @@ end
 
 
 def add_string_as_number(string_1, string_2)
-  string_as_number = string_1.to_i + string_2.to_i
+  return string_1.to_i + string_2.to_i
 end
 
 
 def number_to_full_name(month_num)
   month = case month_num
-  when 1
-    "January"
-  when 2
-    "February"
-  when 3
-    "March"
-  when 4
-    "April"
-  when 5
-    "May"
-  when 6
-    "June"
-  when 7
-    "July"
-  when 8
-    "August"
-  when 9
-    "September"
-  when 10
-    "October"
-  when 11
-    "November"
-  when 12
-    "December"
-return month
-end
+      when 1
+        "January"
+      when 3
+        "March"
+      when 9
+        "September"
+    end
+    return month
 end
 
 
 def substring(month_num)
-    month = case month_num
-    when 1
-      "Jan"
-    when 2
-      "Feb"
-    when 3
-      "Mar"
-    when 4
-      "Apr"
-    when 5
-      "May"
-    when 6
-      "Jun"
-    when 7
-      "Jul"
-    when 8
-      "Aug"
-    when 9
-      "Sep"
-    when 10
-      "Oct"
-    when 11
-      "Nov"
-    when 12
-      "Dec"
-  return month
-  end
+  number_to_full_name(month_num).slice( 0..2 )
 end
 
 
 def volume_of_cube(length)
-  volume = length ** 3
+  return length ** 3
 end
 
 
 def volume_of_sphere(radius)
-  volume = ( ( 4.0 / 3.0 ) * ( Math::PI ) * ( radius ** 3 ))
+  return ( ( 4.0 / 3.0 ) * Math::PI * radius ** 3 ).round(2)
 end
 
 
-def days_until_christmas()
+def days_until_christmas(date)
+  christmas = Date.new( date.year, 12, 25 )
+  days = christmas - date
+  if days < 0
+    days = christmas.next_year - date
+  end
+  return days
+end
 
+# require 'date'
+# def days_to_christmas
+#   today = Date.today
+#   christmas = Date.new(today.year, 12, 25)
+#   sleeps = (christmas - today).to_i
+#   return sleeps
+# end
+
+def age_of_person(dob_string)
+  date_of_birth = Date.parse( dob_string )
+  today = Date.today
+  age = today.year - date_of_birth.year
+  birthday_has_passed = today.month > date_of_birth.month ||
+  (today.month == date_of_birth.month && date_of_birth.day > today.day)
+  age -= 1 unless birthday_has_passed
+  return age
 end
 
 
-def age_of_person()
-  
-end
+# def age_of_person(year, month, day)
+#   day = Date.today - Date.new(year, month, day)
+#   return days.to_i / 365
+# end
